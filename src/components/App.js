@@ -37,7 +37,7 @@ class App extends Component {
     let token = window.location.search.split("=")[1];
     console.log(token)
 
-    fetch ("https://api.spotify.com/v1/me/tracks/contains", 
+    fetch ("https://api.spotify.com/v1/me/top/tracks", 
     {headers: {"Authorization": 'Bearer ' + token}})
     .then(response => response.json()).then(data => console.log(data))
   }
