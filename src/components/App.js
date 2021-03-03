@@ -3,6 +3,8 @@ import './App.scss';
 import Artist from "./artist"
 import ArtistList from "./artistlist"
 import Welcome from "./welcome"
+import SongList from "./songlist"
+import MagicSquare from "./magicsquare"
 import React, {Component} from 'react'
 
 
@@ -12,24 +14,31 @@ class App extends Component {
 
   render() {
     return (
-      <div className="full">
+      <div>
           <div className="welcome">
             <Welcome name = {name}/>
           </div>
           <div className="analysis">
-            <div className="you">
+            <div className="third">
               <div>
-                <h1> Favorites 💿 </h1>
+                <h3 className="title"> Mes gars <span className="party_span"> sûrs </span></h3>
                 <ArtistList/>
               </div>
-              <h3> Mes gars sûrs 💪🏻 </h3>
+              <div>
+                <h3 className="title">En <span className="text-span-3">boucle</span> 🔄</h3>
+                <SongList/>
+              </div>
+            </div>
+            <div className="third">
               
-              <h3> En clebou 🤯 </h3>
             </div>
-            <div className="le-club">
+            <div className="third">
+              <h3 className="title">Magic<span className="text-span-4">square</span></h3>
+              <MagicSquare/>
             </div>
+
           </div>
-        </div>
+      </div>
       );
   } 
   
