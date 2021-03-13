@@ -1,6 +1,6 @@
 import logo from '../logo.svg';
 import './App.scss';
-import Artist from "./artist"
+
 import ArtistList from "./artistlist"
 import Welcome from "./welcome"
 import SongList from "./songlist"
@@ -8,7 +8,10 @@ import MagicSquare from "./magicsquare"
 import React, {Component} from 'react'
 
 
-
+const playAudio = (url) => {
+  var a = new Audio(url);
+  a.play();
+}
 
 class App extends Component {
   constructor() {
@@ -16,6 +19,7 @@ class App extends Component {
     this.state = { 
       name : "",
       favArtists: [],
+      favTracks: [],
       recommendedSongs: [],
 
     }
@@ -33,11 +37,11 @@ class App extends Component {
               <div className="third">
                 <div>
                   <h3 className="title"> Mes gars <span className="party_span"> sûrs </span></h3>
-                  <ArtistList/>
+                  <ArtistList artists={this.state.favArtists}/>
                 </div>
                 <div>
                   <h3 className="title">En <span className="text-span-3">boucle</span> 🔄</h3>
-                  <SongList/>
+                  <SongList tracks={this.state.favTracks} />
                 </div>
               </div>
               <div className="third">
@@ -51,8 +55,8 @@ class App extends Component {
         </div>
         :
         <div>
-          <div class="login">
-            <button onClick={()=> {window.location.href.includes("localhost") ? window.location="http://localhost:8888/login" : window.location="https://spotify-backend-nino.herokuapp.com/login"}} class="login-button w-inline-block"></button>
+          <div className="login">
+            <button onClick={()=> {window.location.href.includes("localhost") ? window.location="http://localhost:8888/login" : window.location="https://spotify-backend-nino.herokuapp.com/login"}} className="login-button w-inline-block"></button>
           </div>
         </div>
       }
@@ -71,12 +75,39 @@ class App extends Component {
 
       //Get the tracks 
       fetch("https://api.spotify.com/v1/me/top/tracks?limit=5&time_range=short_term",{headers: {"Authorization": 'Bearer ' + token}})
-      .then(response => response.json()).then(data => console.log(data))
+      .then(response => response.json()).then(data => 
+        this.setState({
+            favTracks : data.items.map(
+              (track) => {
+                return {
+                name: track.name,
+                artist: track.artists[0].name, 
+                image: track.album.images[0].url,
+                preview_url: track.preview_url
+                }
+              }
+            )
+          }
+        )
+      )
+
+      fetch("https://api.spotify.com/v1/me/tracks",{headers: {"Authorization": 'Bearer ' + token}})
+      .then(response => response.json()).then(data=> console.log(data))
 
       //Get the artists
       fetch("https://api.spotify.com/v1/me/top/artists?limit=4&time_range=short_term",{headers: {"Authorization": 'Bearer ' + token}})
-      .then(response => response.json()).then(data => console.log(data.items[0].images[2].url))
+      .then(response => response.json()).then(data => this.setState({
+        favArtists: 
+        data.items.map((i) => {
+          return {
+            name: i.name,
+            image: i.images[0].url
+          }          
+        })
+      })    
+     )
     }
+
   }
 
   
