@@ -52,7 +52,7 @@ class App extends Component {
         :
         <div>
           <div class="login">
-            <button onClick={()=> {window.location.includes("localhost") ? window.location="http://localhost:8888/login" : window.location="https://spotify-backend-nino.herokuapp.com/login"}}href="#" class="login-button w-inline-block"></button>
+            <button onClick={()=> {window.location.href.includes("localhost") ? window.location="http://localhost:8888/login" : window.location="https://spotify-backend-nino.herokuapp.com/login"}}href="#" class="login-button w-inline-block"></button>
           </div>
         </div>
       }
