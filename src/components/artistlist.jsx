@@ -4,11 +4,11 @@ import Artist from "./artist"
 class ArtistList extends Component {
     render() {
       return (
-        <div className="artists-list">
+        <div className="w-layout-grid grid-artist">
           {
             this.props.artists.map((artist) => {
               return (
-                <Artist info={artist} key={artist.name}/>
+                <Artist artist={artist} key={artist.name}/>
               )
             })
           }

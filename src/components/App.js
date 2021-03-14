@@ -21,7 +21,6 @@ class App extends Component {
       favArtists: [],
       favTracks: [],
       recommendedSongs: [],
-
     }
   }
 
@@ -41,7 +40,7 @@ class App extends Component {
                 </div>
                 <div>
                   <h3 className="title">En <span className="text-span-3">boucle</span> 🔄</h3>
-                  <SongList tracks={this.state.favTracks} />
+                  <SongList tracks={this.state.favTracks.slice(0,5)} />
                 </div>
               </div>
               <div className="third">
@@ -49,7 +48,7 @@ class App extends Component {
               </div>
               <div className="third">
                 <h3 className="title">Magic<span className="text-span-4">square</span></h3>
-                <MagicSquare/>
+                <MagicSquare tracks={this.state.favTracks}/>
               </div>
             </div>
         </div>
@@ -74,7 +73,7 @@ class App extends Component {
       .then(response => response.json()).then(data => this.setState({name: data.display_name.split(" ")[0]}))
 
       //Get the tracks 
-      fetch("https://api.spotify.com/v1/me/top/tracks?limit=5&time_range=short_term",{headers: {"Authorization": 'Bearer ' + token}})
+      fetch("https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=short_term",{headers: {"Authorization": 'Bearer ' + token}})
       .then(response => response.json()).then(data => 
         this.setState({
             favTracks : data.items.map(

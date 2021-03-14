@@ -7,10 +7,9 @@ class MagicSquare extends Component {
         <div>
              <a href="#" className="shuffle-button w-button"><strong className="button-text">Shuffle </strong><span className="text-span-5"><strong className="button-emoji">🥘</strong></span></a>
              <div className="magic-grid">
-               <DiscoverTrack/>
-               <DiscoverTrack/>
-               <DiscoverTrack/>
-               <DiscoverTrack/>
+               {this.props.tracks.map((track)=>{
+                 return <DiscoverTrack track={track}/>
+               })}
              </div>
         </div>
 

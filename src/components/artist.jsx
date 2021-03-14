@@ -3,9 +3,12 @@ import React, {Component} from 'react'
 class Artist extends Component {
     render() {
       return (
-        <div className="discover-track">
-            <p>{this.props.info.name}</p>
-        </div>        
+       
+            <div className="carre-artist" style={{backgroundImage: `url(${this.props.artist.image})`}}>
+               <div className="artist"  >
+               </div>     
+            </div>
+           
       )
     }
 }

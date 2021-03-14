@@ -1932,6 +1932,7 @@ WEBFLOW CSS
   grid-template-areas: ". Area";
 }
 
+
 .gars-surs {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1940,36 +1941,15 @@ WEBFLOW CSS
 }
 
 .carre-artist {
-  width: 110px;
-  height: 110px;
+  width: 150px;
+  height: 150px;
   border-radius: 20px;
   background-position: 0px 0px;
   background-size: cover;
 }
 
-.carre-artist2 {
-  width: 110px;
-  height: 110px;
-  border-radius: 20px;
-  background-position: 0px 0px;
-  background-size: contain;
-}
-
-.carre-artist3 {
-  width: 110px;
-  height: 110px;
-  background-position: 50% 50%;
-  background-size: contain;
-}
-
-.carre-artist4 {
-  width: 110px;
-  height: 110px;
-  border-style: solid;
-  border-color: #000;
-  border-radius: 20px;
-  background-position: 0px 0px, 50% 50%;
-  background-size: auto, contain;
+.artist-list {
+  width: 100%
 }
 
 .artist {
@@ -1981,6 +1961,8 @@ WEBFLOW CSS
   border-color: #8a8a8a;
   border-radius: 20px;
   box-shadow: 0 0 17px 2px rgba(255, 254, 254, 0.49);
+  background-position: 0px 0px, 50% 50%;
+  background-size: auto, contain;
 }
 
 .party-span {
@@ -2020,12 +2002,12 @@ WEBFLOW CSS
   font-weight: 700;
 }
 
-.text-block-2 {
+.artist-name {
   color: #aaa;
   font-size: 12px;
 }
 
-.div-block-2 {
+.artist-info {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2067,24 +2049,40 @@ WEBFLOW CSS
 .magic-grid {
   display: -ms-grid;
   display: grid;
-  height: 200px;
+  height: auto;
   margin-top: 20px;
   grid-auto-columns: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   -ms-grid-columns: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   -ms-grid-rows: auto ;
   grid-template-rows: auto ;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 1px 17px 2px hsla(0, 0%, 100%, 0.72);
 }
+
 .discover-track {
   width: 100%;
-  height: 100%;
+  position: relative;
   background-color: green;
+  background-position: 50% 50%;
+  background-size: contain;
 }
+
+.discover-track:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.track-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 .grid-2 {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
